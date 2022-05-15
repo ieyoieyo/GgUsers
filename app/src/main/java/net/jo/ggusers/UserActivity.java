@@ -32,6 +32,7 @@ public class UserActivity extends AppCompatActivity implements IView{
 
         String login = getIntent().getStringExtra("login");
 
+        // Close Button
         ((ImageView)findViewById(R.id.closeBtn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,19 +86,11 @@ public class UserActivity extends AppCompatActivity implements IView{
 
         ConnectivityManager conMgr = (ConnectivityManager) getSystemService (Context.CONNECTIVITY_SERVICE);
 
-        if (conMgr.getActiveNetworkInfo() != null
+        return conMgr.getActiveNetworkInfo() != null
 
                 && conMgr.getActiveNetworkInfo().isAvailable()
 
-                && conMgr.getActiveNetworkInfo().isConnected()) {
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
+                && conMgr.getActiveNetworkInfo().isConnected();
 
     }
 
